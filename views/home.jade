@@ -1,0 +1,83 @@
+extends templates/default
+
+block content
+    #main-container
+        section#noticias-agenda
+            .row
+                .column.small-12.medium-4
+                    ul#lineup-tabs.tabs(data-tabs='')
+                        li.tabs-title.is-active
+                            a(href='#hoy') Hoy
+                        li.tabs-title
+                            a(href='#proximo') Proximamente
+                    .tabs-content(data-tabs-content='lineup-tabs')
+                        #hoy.tabs-panel.is-active
+                            h3 Lorem
+                            p
+                                | Lorem ipsum dolor sit amet, consectetur aeiusmod
+                                | tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            h3 Lorem
+                            p
+                                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                | tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            h3 Lorem
+                            p
+                                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                | tempor incididunt ut labore et dolore magna aliqua. Ut enim ,
+                            h3 Lorem
+                            p
+                                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sedm,
+                        #proximo.tabs-panel
+                            article.event
+                                .event-date
+                                    p.event-month Sept
+                                    p.event-day 18
+                                .event-desc
+                                    h4.event-desc-header Day in the Life of Foundation for Apps
+                                    p.event-desc-detail
+                                        span.event-desc-time
+                                        | BDConf - Altlanta
+                                    a.rsvp.button(href='http://bdconf.com/speakers/brandon-arnold/') RSVP & Details
+                            hr
+                            article.event
+                                .event-date
+                                    p.event-month Oct
+                                    p.event-day 21
+                                .event-desc
+                                    h4.event-desc-header Day in the Life of Foundation for Apps
+                                    p.event-desc-detail
+                                        span.event-desc-time
+                                        | BDConf - Washington, DC
+                                    a.rsvp.button(href='http://bdconf.com/speakers/brandon-arnold/') RSVP & Details
+                .column.small-12.medium-8
+                    .orbit(role='region', aria-label='Favorite Space Pictures', data-orbit='', data-options='animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;')
+                        ul.orbit-container
+                            button.orbit-previous
+                                span.show-for-sr Previous Slide
+                                | ◀︎
+                            button.orbit-next
+                                span.show-for-sr Next Slide
+                                | ▶︎
+                            li.is-active.orbit-slide
+                                img.orbit-image(src='../images/1.png', alt='Space')
+                                figcaption.orbit-caption Space, the final frontier.
+                            li.orbit-slide
+                                img.orbit-image(src='../images/2.png', alt='Space')
+                                figcaption.orbit-caption Lets Rocket!
+                            li.orbit-slide
+                                img.orbit-image(src='../images/3.png', alt='Space')
+                                figcaption.orbit-caption Encapsulating
+                            li.orbit-slide
+                                img.orbit-image(src='../images/2.png', alt='Space')
+                                figcaption.orbit-caption Outta This World
+                        nav.orbit-bullets
+                            button.is-active(data-slide='0')
+                                span.show-for-sr First slide details.
+                                span.show-for-sr Current Slide
+                            button(data-slide='1')
+                                span.show-for-sr Second slide details.
+                            button(data-slide='2')
+                                span.show-for-sr Third slide details.
+                            button(data-slide='3')
+                                span.show-for-sr Fourth slide details.
+

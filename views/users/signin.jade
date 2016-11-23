@@ -1,0 +1,25 @@
+extends ../templates/default
+
+block content
+    .row
+        .column.large-4.large-offset-4
+            if message.length > 0
+                .callout.success
+                    h5=message
+            .signup-panel
+                p.welcome  Sistema de Inicio de Sesión
+                form(action='http://127.0.0.1:3000/auth/signin', method='post')
+                    .row.collapse
+                        .small-2.columns
+                            span.prefix
+                                i.fi-mail
+                        .small-10.columns
+                            input(type='text', name='username', placeholder='email')
+                    .row.collapse
+                        .small-2.columns
+                            span.prefix
+                                i.fi-lock
+                        .small-10.columns
+                            input(type='password', name='password', placeholder='password')
+                    .input-group-button
+                        input.button(type='submit', value='Iniciar Sesión')

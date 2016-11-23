@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet','text/css', href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation.css')
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/foundation-icons/3.0/foundation-icons.min.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation-flex.css')
+  body
+    include brand
+    include nav
+    block content
+    script(type='application/javascript' src='https://code.jquery.com/jquery-2.2.4.min.js')
+    script(type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation.js')
+    script(type='application/javascript' src='/javascripts/app.js')

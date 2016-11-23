@@ -9,7 +9,10 @@ html
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation-flex.css')
   body
     include brand
-    include nav
+    if isAuthenticated
+        include navlogin
+    else
+        include nav
     block content
     script(type='application/javascript' src='https://code.jquery.com/jquery-2.2.4.min.js')
     script(type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation.js')

@@ -41,5 +41,17 @@ module.exports={
 
 	getSignIn: function(req,res,next){
 		return res.render('users/signin',{message:req.flash('info')});
+	}, 
+
+	logout: function(req,res,next){
+		req.logout();
+		res.redirect('/auth/signin');
+	},
+
+	getUserPanel : function(req,res,next){
+		res.render('users/panel', {
+			isAuthenticated : req.isAuthenticated(),
+			user: req.user
+		});
 	}
 };

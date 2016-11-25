@@ -23,3 +23,6 @@ block content
                             input(type='password', name='password', placeholder='password')
                     .input-group-button
                         input.button(type='submit', value='Iniciar Sesión')
+            if authmessage.length > 0
+                .callout.alert
+                    h5=authmessage

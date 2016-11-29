@@ -23,7 +23,7 @@ module.exports = function(passport){
 
  		db.connect();
 
- 		db.query('SELECT * FROM usuarios WHERE Email = ?',email,function(err, rows, fields){
+ 		db.query('SELECT * FROM users WHERE Email = ?',email,function(err, rows, fields){
  			if(err) throw err;
 
  			db.end();

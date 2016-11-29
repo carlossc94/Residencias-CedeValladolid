@@ -14,13 +14,13 @@ block content
                             span.prefix
                                 i.fi-mail
                         .small-10.columns
-                            input(type='text', name='username', placeholder='email')
+                            input(type='email', name='username', placeholder='email',required='')
                     .row.collapse
                         .small-2.columns
                             span.prefix
                                 i.fi-lock
                         .small-10.columns
-                            input(type='password', name='password', placeholder='password')
+                            input(type='password', name='password', placeholder='password',required='')
                     .input-group-button
                         input.button(type='submit', value='Iniciar Sesión')
             if authmessage.length > 0

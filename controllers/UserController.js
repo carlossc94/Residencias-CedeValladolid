@@ -17,6 +17,7 @@ module.exports={
 			Nombre:req.body.nombre,
 			Email:req.body.email,
 			Password:password,
+			Departamento:req.body.departamento,
 			Privilegios:"e"
 		};
 
@@ -26,7 +27,7 @@ module.exports={
 
 		db.connect();
 
-		db.query('INSERT INTO usuarios SET ?', user, function(err,rows,fields){
+		db.query('INSERT INTO users SET ?', user, function(err,rows,fields){
 			if(err) throw err;
 
 			db.end();
@@ -53,7 +54,7 @@ module.exports={
 	},
 
 	getUserPanel : function(req,res,next){
-		res.render('users/panel', {
+		res.render('dashboard/panel', {
 			title:'Dashboard',
 			isAuthenticated : req.isAuthenticated(),
 			user: req.user

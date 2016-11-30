@@ -1,0 +1,16 @@
+extends ../templates/default
+
+block content
+    .ui.container.segment.justified
+        h2.ui.header.dividing Crear Nueva Noticia
+
+        div(class='form-nuevanoticia')
+            form(class=['ui','form'] action='' method='post')
+                .field
+                    label Titulo De La Noticia
+                    input(type='text', name='titulo', placeholder='Escriba el Título')
+                .field
+                    label Cuerpo de la noticia
+                    textarea(style='margin-top: 0px; margin-bottom: 0px; height: 200px;', name='cuerpo')
+                button.ui.button(type='submit') Submit
+                div(class=['ui','message','error'])

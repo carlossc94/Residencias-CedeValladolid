@@ -2,7 +2,8 @@ var config={
 	host:'localhost',
 	user:'root',
 	password:'greenday',
-	database:'cedevalladolid'
+	database:'cedevalladolid',
+	dateStrings:true
 };
 
 module.exports=config;

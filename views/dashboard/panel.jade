@@ -1,5 +1,25 @@
 extends ../templates/default
 
 block content
-	h1= title
-	div(class='container' id='contenedor')='Hola crud con node js'
+    .ui.container.segment.justified
+        h2.ui.header.dividing Sistema CRUD, Noticias
+
+        table(class=['ui', 'table', 'celled'] id='tbl-productos')
+            thead
+                tr
+                    th='ID'
+                    th='Titulo'
+                    th='Contenido'
+                    th='Fecha'
+                    th='Publicado Por:'
+                    th='Acciones'
+            tbody
+                each noticia in noticias
+                    tr
+                        td=noticia.ID_Noticia
+                        td=noticia.Titulo
+                        td=noticia.Cuerpo
+                        td=noticia.Fecha
+                        td=noticia.Publicado
+                        td='Eliminar Modificar'
+

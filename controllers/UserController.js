@@ -3,7 +3,11 @@ var bcrypt=require('bcryptjs');
 
 module.exports={
 	SignUp:function(req,res,next){
-		return res.render('users/signup',{title:'Ingreso de Usuarios'});
+		return res.render('users/signup',{
+			title:'Ingreso de Usuarios',
+			message:req.flash('info'),
+			isAuthenticated : req.isAuthenticated()
+		});
 	},
 
 	PostSignUp:function(req,res,next){
@@ -34,16 +38,15 @@ module.exports={
 		});
 
 		//Uso de mensajes flash
-		req.flash('info','Se ha registrado correctamente ya puede iniciar sesión');
+		req.flash('info','Usuario registrado correctamente '+user.Nombre+' ya puede iniciar sesión');
 		
-		return res.redirect('/auth/signin');
+		return res.redirect('/dashboard/insertar/usuario');
 
 	},
 
 	getSignIn: function(req,res,next){
 		return res.render('users/signin',{
 			title:'Iniciar Sesión',
-			message:req.flash('info'),
 			authmessage :req.flash('authmessage')
 		});
 	}, 

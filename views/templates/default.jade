@@ -7,6 +7,8 @@ html
     link(rel='stylesheet', href='https://cdn.jsdelivr.net/foundation-icons/3.0/foundation-icons.min.css')
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css')
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation-flex.css')
+    if isAuthenticated
+        link(rel='stylesheet', href='/semantic/semantic.css') 
   body
     include brand
     if isAuthenticated
@@ -17,3 +19,6 @@ html
     script(type='application/javascript' src='https://code.jquery.com/jquery-2.2.4.min.js')
     script(type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation.js')
     script(type='application/javascript' src='/javascripts/app.js')
+    if isAuthenticated
+        script(type='application/javascript', src='/semantic/semantic.js') 
+        script(type='application/javascript' src='/javascripts/validation.js')

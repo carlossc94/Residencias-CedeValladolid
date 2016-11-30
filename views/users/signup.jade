@@ -3,9 +3,12 @@ extends ../templates/default
 block content
     .row
         .column.large-4.large-offset-4
+            if message.length > 0
+                .callout.success
+                    h5=message
             .signup-panel
                 p.welcome  Sistema de Registro Empleados
-                form(action='http://127.0.0.1:3000/auth/signup', method='post')
+                form(class='form' action='http://127.0.0.1:3000/dashboard/insertar/usuario', method='post')
                     .row.collapse
                         .small-2.columns
                             span.prefix

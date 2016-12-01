@@ -1,0 +1,41 @@
+extends ../templates/default
+
+block content
+    .ui.container.segment.justified
+        h2.ui.header.dividing Sistema CRUD, Noticias
+
+        table(class=['ui', 'table', 'celled'] id='tbl-productos')
+            thead
+                tr
+                    th='ID'
+                    th='Titulo'
+                    th='Contenido'
+                    th='Fecha'
+                    th='Publicado Por:'
+                    th='Acciones'
+            tbody
+                each noticia in noticias
+                    tr
+                        td(id='id_noticia')=noticia.ID_Noticia
+                        td=noticia.Titulo
+                        td=noticia.Cuerpo
+                        td=noticia.Fecha
+                        td=noticia.Publicado
+                        td
+                            a(class=['ui button basic icon'] href='#' data-tooltip='Eliminar' data-position='top center' data-inverted='' id='btn-eliminar')
+                                i(class=['trash icon'])
+                            a(class=['ui button basic icon'] href='/dashboard/modificar/noticia/'+noticia.ID_Noticia data-tooltip='Modificar' data-position='top center' data-inverted='')
+                                i(class=['write icon'])
+    .ui.small.test.modal
+        .header
+            | Borrar Noticia
+        .content
+            p ¿Desea Eliminar Esta Noticia?
+        .actions
+            .ui.negative.button
+                | No
+            .ui.positive.right.labeled.icon.button
+                | Yes
+                i.checkmark.icon
+
+    script(type='application/javascript' src='/javascripts/noticias.js')                            

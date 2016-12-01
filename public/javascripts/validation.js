@@ -21,4 +21,36 @@ $(function(){
       }
     }
   });
+
+$('.form.registro').form({
+      nombre: {
+        identifier: 'nombre',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Nombre no puede estar vacío'
+          }
+        ]},
+      email: {
+        identifier: 'email',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Email no puede estar vacío'
+          },
+          {
+            type: 'expReg',
+            value:'^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$',
+            prompt : 'Este no es un correo valido'
+          }
+        ]},
+        pass: {
+        identifier: 'pass',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Password no puede estar vacío'
+          }
+        ]}  
+    })
 });

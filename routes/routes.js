@@ -13,13 +13,23 @@ router.get('/auth/signin',controllers.UserController.getSignIn);
 
 router.get('/auth/logout',controllers.UserController.logout);
 
-router.get('/dashboard/panel', authmiddle.isLogged, controllers.NoticiasController.getNoticias);
+router.get('/ubicacion',controllers.maps.ubicacion);
+
+router.get('/dashboard/panel/noticia', authmiddle.isLogged, controllers.NoticiasController.getNoticias);
 router.get('/dashboard/insertar/noticia', authmiddle.isLogged, controllers.NoticiasController.getNuevaNoticia);
 router.post('/dashboard/insertar/noticia',authmiddle.isLogged,controllers.NoticiasController.postNuevaNoticia);
-router.post('/dashboard/panel',authmiddle.isLogged,controllers.NoticiasController.eliminarNoticia);
+router.post('/dashboard/panel/noticia',authmiddle.isLogged,controllers.NoticiasController.eliminarNoticia);
 
 router.get('/dashboard/modificar/noticia/:id',authmiddle.isLogged,controllers.NoticiasController.modificarNoticia);
 router.post('/modificado/noticia',authmiddle.isLogged,controllers.NoticiasController.postModificarNoticia);
+
+//Pendiente
+router.get('/dashboard/panel/pendiente', authmiddle.isLogged, controllers.PendientesController.getPendiente);
+router.get('/dashboard/insertar/pendiente', authmiddle.isLogged, controllers.PendientesController.getNuevaPendiente);
+router.post('/dashboard/insertar/pendiente',authmiddle.isLogged,controllers.PendientesController.postNuevaPendiente);
+router.post('/dashboard/panel/pendiente',authmiddle.isLogged,controllers.PendientesController.eliminarPendiente);
+router.get('/dashboard/modificar/pendiente/:id',authmiddle.isLogged,controllers.PendientesController.modificarPendiente);
+router.post('/modificado/pendiente',authmiddle.isLogged,controllers.PendientesController.postModificarPendiente);
 
 
 router.get('/dashboard/insertar/usuario', authmiddle.isLogged,controllers.UserController.SignUp);
@@ -30,7 +40,7 @@ router.post('/dashboard/insertar/usuario',authmiddle.isLogged,controllers.UserCo
 
 //autenticacion por el metodo local, la ruta de que salga bien el autenticacion, de que salga mal y activar un messaje flash en true
 router.post('/auth/signin', passport.authenticate('local',{
-	successRedirect : '/dashboard/panel',
+	successRedirect : '/dashboard/panel/noticia',
 	failureRedirect: '/auth/signin',
 	failureFlash: true
 }));

@@ -1,0 +1,21 @@
+extends ../templates/default
+
+block content
+    .ui.container.segment.justified
+        h2.ui.header.dividing Crear Nuevo Pendiente
+
+        div(class='form-nuevopendiente')
+            form(class=['ui','form'] action='' method='post')
+                .field
+                    label Titulo Del Pendiente
+                    input(type='text', name='titulo', placeholder='Escriba el Título')
+                .field
+                    label Cuerpo del Pendiente
+                    textarea(style='margin-top: 0px; margin-bottom: 0px; height: 200px;', name='cuerpo')
+                button.ui.button(type='submit') Subir Pendiente
+                div(class=['ui','message','error'])
+        if info != undefined
+            div(class=['ui','message', 'success'])
+                i(class=['close','icon'])
+                div(class='header') Ingreso Correcto
+                    p=info

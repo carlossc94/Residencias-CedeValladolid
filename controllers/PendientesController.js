@@ -2,38 +2,38 @@ var mysql=require('mysql');
 var format=require('dateformat');
 
 module.exports={
-	getNoticias:function(req,res,next){
+	getPendiente:function(req,res,next){
 		var config=require('.././databases/config');
 		var db=mysql.createConnection(config);
 		db.connect();
 
-		var noticias=null;
+		var pendientes=null;
 
-		db.query('SELECT * FROM Noticias', function(err,rows,fields){
+		db.query('SELECT * FROM Pendientes', function(err,rows,fields){
 			if(err) throw err;
 
-			noticias = rows;
+			pendientes = rows;
 			db.end();
-			res.render('dashboard/panel', 
-				{noticias:noticias,
+			res.render('dashboard/panelpendiente', 
+				{pendientes:pendientes,
 				title:'Dashboard',
 				isAuthenticated : req.isAuthenticated()
 			});
 		});
 	},
 
-	getNuevaNoticia:function(req,res,next){
-		res.render('dashboard/noticias',{
-			title:'Subir Noticia',
+	getNuevaPendiente:function(req,res,next){
+		res.render('dashboard/pendientes',{
+			title:'Subir pendientes',
 			isAuthenticated : req.isAuthenticated()
 		})
 	},
 
-	postNuevaNoticia:function(req,res,next){
+	postNuevaPendiente:function(req,res,next){
 		var fechaserver=new Date();
 		var fecha=format(fechaserver,'yyyy-mm-dd h:MM:ss');
 
-		var noticia={
+		var pendiente={
 			Titulo: req.body.titulo,
 			Cuerpo: req.body.cuerpo,
 			Fecha: fecha,
@@ -44,19 +44,19 @@ module.exports={
 		var db=mysql.createConnection(config);
 		db.connect();
 
-		db.query('INSERT INTO Noticias SET ?', noticia,function(err,rows,fields){
+		db.query('INSERT INTO Pendientes SET ?', pendiente,function(err,rows,fields){
 			if (err) throw err;
 
 			db.end();
 		});
 
-		res.render('dashboard/noticias', {
-			info: 'La noticia se ha subido exitosamente a la base de datos',
+		res.render('dashboard/pendientes', {
+			info: 'El Pendiente se ha subido exitosamente a la base de datos',
 			isAuthenticated : req.isAuthenticated()
 		});
 	},
 
-	eliminarNoticia:function(req, res, next){
+	eliminarPendiente:function(req, res, next){
 		var id=req.body.id;
 
 		var config=require('.././databases/config');
@@ -65,7 +65,7 @@ module.exports={
 
 		var respuesta={res:false};
 
-		db.query('DELETE FROM Noticias where ID_Noticia=?', id, function(err, rows, fields){
+		db.query('DELETE FROM Pendientes where ID_Pendiente=?', id, function(err, rows, fields){
 			if(err) throw err;
 
 			db.end();
@@ -75,32 +75,32 @@ module.exports={
 		});
 	},
 
-	modificarNoticia:function(req,res,next){
+	modificarPendiente:function(req,res,next){
 		var id=req.params.id;
 
 		var config=require('.././databases/config');
 		var db=mysql.createConnection(config);
 		db.connect();
 
-		var noticia=null;
+		var pendiente=null;
 
-		db.query('SELECT * FROM Noticias WHERE ID_Noticia=?', id, function(err, rows,fields){
+		db.query('SELECT * FROM Pendientes WHERE ID_Pendiente=?', id, function(err, rows,fields){
 			if (err) throw err;
 
-			noticia=rows;
+			pendiente=rows;
 
 			db.end();
 
-			res.render('dashboard/modificarnoticia', {
-				title: 'Modificar Noticia',
-				noticia:noticia,
+			res.render('dashboard/modificarpendiente', {
+				title: 'Modificar Pendiente',
+				pendiente:pendiente,
 				isAuthenticated : req.isAuthenticated()
 			});
 		});
 	},
 
-	postModificarNoticia:function(req,res,next){
-		var noticia={
+	postModificarPendiente:function(req,res,next){
+		var pendiente={
 			Titulo: req.body.titulo,
 			Cuerpo: req.body.cuerpo
 		};
@@ -109,15 +109,13 @@ module.exports={
 		var db=mysql.createConnection(config);
 		db.connect();
 
-		db.query('UPDATE Noticias SET ? WHERE ?', [noticia, {id_noticia:req.body.id_noticia}], function(err, rows, fields){
+		db.query('UPDATE Pendientes SET ? WHERE ?', [pendiente, {id_pendiente:req.body.id_pendiente}], function(err, rows, fields){
 			if(err) throw err;
 
 			db.end();
 		});
 
-		res.redirect('/dashboard/panel/noticia')
+		res.redirect('/dashboard/panel/pendiente')
 	}
 
 }
-
-//variables por post es body, variables por get es params

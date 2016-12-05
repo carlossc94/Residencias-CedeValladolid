@@ -14,5 +14,6 @@ block content
                     textarea(style='margin-top: 0px; margin-bottom: 0px; height: 200px;', name='cuerpo')
                         | #{noticia[0].Cuerpo}
                     input(type='hidden', name='id_noticia', value=noticia[0].ID_Noticia)
+
                 button.ui.button(type='submit') Actualizar Noticia
                 div(class=['ui','message','error'])

@@ -2,9 +2,9 @@ extends ../templates/default
 
 block content
     .ui.container.segment.justified
-        h2.ui.header.dividing Sistema CRUD, Noticias
+        h2.ui.header.dividing Sistema CRUD, Pendientes
 
-        table(class=['ui', 'table', 'celled'] id='tbl-productos')
+        table(class=['ui', 'table', 'celled'] id='tbl-pendientes')
             thead
                 tr
                     th='ID'
@@ -14,26 +14,26 @@ block content
                     th='Publicado Por:'
                     th='Acciones'
             tbody
-                each noticia in noticias
+                each pendiente in pendientes
                     tr
-                        td(id='id_noticia')=noticia.ID_Noticia
-                        td=noticia.Titulo
-                        td=noticia.Cuerpo
-                        td=noticia.Fecha
-                        td=noticia.Publicado
+                        td(id='id_pendiente')=pendiente.ID_Pendiente
+                        td=pendiente.Titulo
+                        td=pendiente.Cuerpo
+                        td=pendiente.Fecha
+                        td=pendiente.Publicado
                         td
                             a(class=['ui button basic icon'] href='#' data-tooltip='Eliminar' data-position='top center' data-inverted='' id='btn-eliminar')
                                 i(class=['trash icon'])
-                            a(class=['ui button basic icon'] href='/dashboard/modificar/noticia/'+noticia.ID_Noticia data-tooltip='Modificar' data-position='top center' data-inverted='')
+                            a(class=['ui button basic icon'] href='/dashboard/modificar/pendiente/'+pendiente.ID_Pendiente data-tooltip='Modificar' data-position='top center' data-inverted='')
                                 i(class=['write icon'])
     .ui.small.test.modal
         .header
-            | Borrar Noticia
+            | Borrar Pendiente
         .content
-            p ¿Desea Eliminar Esta Noticia?
+            p ¿Desea Eliminar Esta Pendiente?
         .actions
             .ui.negative.button
                 | No
             .ui.positive.right.labeled.icon.button
                 | Yes
-                i.checkmark.icon                            
+                i.checkmark.icon

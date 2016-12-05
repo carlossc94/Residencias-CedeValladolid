@@ -1,0 +1,19 @@
+extends ../templates/default
+
+block content
+    .ui.container.segment.justified
+        h2.ui.header.dividing Modificar Pendiente
+
+        div(class='form-nuevapendiente')
+            form(class=['ui','form'] action='/modificado/pendiente' method='post')
+                .field
+                    label Titulo De La Pendiente
+                    input(type='text', name='titulo', placeholder='Escriba el Título', value=pendiente[0].Titulo)
+                .field
+                    label Cuerpo de la pendiente
+                    textarea(style='margin-top: 0px; margin-bottom: 0px; height: 200px;', name='cuerpo')
+                        | #{pendiente[0].Cuerpo}
+                    input(type='hidden', name='id_pendiente', value=pendiente[0].ID_Pendiente)
+
+                button.ui.button(type='submit') Actualizar Pendiente
+                div(class=['ui','message','error'])

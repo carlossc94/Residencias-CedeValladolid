@@ -34,7 +34,8 @@ module.exports = function(passport){
  					return done (null,{
  						id: user.ID_User,
  						nombre: user.Nombre,
- 						email: user.Email
+ 						email: user.Email,
+ 						privilegios: user.Privilegios
  					});
  				}
  			}

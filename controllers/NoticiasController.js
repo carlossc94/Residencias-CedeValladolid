@@ -1,6 +1,5 @@
 var mysql=require('mysql');
 var format=require('dateformat');
-
 module.exports={
 	getNoticias:function(req,res,next){
 		var config=require('.././databases/config');
@@ -17,7 +16,8 @@ module.exports={
 			res.render('dashboard/panel', 
 				{noticias:noticias,
 				title:'Dashboard',
-				isAuthenticated : req.isAuthenticated()
+				isAuthenticated : req.isAuthenticated(),
+				isAdmin:req.user.privilegios
 			});
 		});
 	},
@@ -25,7 +25,8 @@ module.exports={
 	getNuevaNoticia:function(req,res,next){
 		res.render('dashboard/noticias',{
 			title:'Subir Noticia',
-			isAuthenticated : req.isAuthenticated()
+			isAuthenticated : req.isAuthenticated(),
+			isAdmin:req.user.privilegios
 		})
 	},
 
@@ -37,7 +38,8 @@ module.exports={
 			Titulo: req.body.titulo,
 			Cuerpo: req.body.cuerpo,
 			Fecha: fecha,
-			Publicado: req.user.nombre
+			Publicado: req.user.nombre,
+			User_ID: req.user.id
 		};
 
 		var config=require('.././databases/config');
@@ -94,7 +96,8 @@ module.exports={
 			res.render('dashboard/modificarnoticia', {
 				title: 'Modificar Noticia',
 				noticia:noticia,
-				isAuthenticated : req.isAuthenticated()
+				isAuthenticated : req.isAuthenticated(),
+				isAdmin:req.user.privilegios
 			});
 		});
 	},

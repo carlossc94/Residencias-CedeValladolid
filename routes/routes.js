@@ -13,7 +13,15 @@ router.get('/auth/signin',controllers.UserController.getSignIn);
 
 router.get('/auth/logout',controllers.UserController.logout);
 
-router.get('/ubicacion',controllers.maps.ubicacion);
+router.get('/contacto',controllers.maps.ubicacion);
+
+
+//Static
+router.get('/soporte',controllers.StaticController.getSoporte);
+router.get('/servicios-administrativos',controllers.StaticController.getAdmin);
+router.get('/infraestructura',controllers.StaticController.getInfraestructura);
+router.get('/pagos',controllers.StaticController.getPagos);
+router.get('/control-patrimonial',controllers.StaticController.getPatrimonial);
 
 router.get('/dashboard/panel/noticia', authmiddle.isLogged, controllers.NoticiasController.getNoticias);
 router.get('/dashboard/insertar/noticia', authmiddle.isLogged, controllers.NoticiasController.getNuevaNoticia);
@@ -34,9 +42,6 @@ router.post('/modificado/pendiente',authmiddle.isLogged,controllers.PendientesCo
 
 router.get('/dashboard/insertar/usuario', authmiddle.isLogged,controllers.UserController.SignUp);
 router.post('/dashboard/insertar/usuario',authmiddle.isLogged,controllers.UserController.PostSignUp);
-
-
-
 
 //autenticacion por el metodo local, la ruta de que salga bien el autenticacion, de que salga mal y activar un messaje flash en true
 router.post('/auth/signin', passport.authenticate('local',{

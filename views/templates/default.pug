@@ -12,7 +12,10 @@ html
   body
     include brand
     if isAuthenticated
-        include navlogin
+        if isAdmin=='admin'
+            include navlogin
+        else
+            include navuser
     else
         include nav
     block content

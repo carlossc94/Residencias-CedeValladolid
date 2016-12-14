@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 //variables de mensajes flash y sesion
 var flash=require('connect-flash');
-var session=require('express-session');
+var cookieSession=require('cookie-session');
 //variable con los modulos de ruta
 var routes = require('./routes/routes');
 //uso de las librerias passport para autenticacion
@@ -19,10 +19,9 @@ require('./passport/passport')(passport);
 var app = express();
 //parsear a cookie, uso de la sesion con un clave en produccion la clave de ser mas compleja
 app.use(cookieParser());
-app.use(session({
-  secret:'secret',
-  resave:false,
-  saveUninitialized:false
+app.use(cookieSession({
+  name:'sesion',
+  keys:["arigato-kosaymas", "ningen"]
 }));
 app.use(flash());
 

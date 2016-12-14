@@ -39,8 +39,7 @@ $('.form.registro').form({
             prompt : 'Email no puede estar vacío'
           },
           {
-            type: 'expReg',
-            value:'^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$',
+            type: 'regExp[/[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})/g]',
             prompt : 'Este no es un correo valido'
           }
         ]},

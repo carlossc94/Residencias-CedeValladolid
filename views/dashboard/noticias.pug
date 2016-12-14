@@ -12,7 +12,14 @@ block content
                 .field
                     label Cuerpo de la noticia
                     textarea(style='margin-top: 0px; margin-bottom: 0px; height: 200px;', name='cuerpo')
-                button.ui.button(type='submit') Subir Noticia
+                .field
+                    .ui.teal.labeled.icon.button.fileUpload
+                        i.add.icon
+                        span Agregar Imagen
+                        input.upload#uploadbtn(type='file' accept="image/*")
+                    .ui.input.entrada
+                        input#uploadFile(type='text' placeholder='Choose File' disabled="disbled")
+                button.ui.button.primary.huge(type='submit') Subir Noticia
                 div(class=['ui','message','error'])
         if info != undefined
             div(class=['ui','message', 'success'])

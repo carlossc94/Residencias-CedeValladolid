@@ -1,19 +1,22 @@
 var mysql=require('mysql');
 var bcrypt=require('bcryptjs');
-
 module.exports={
 	SignUp:function(req,res,next){
-		return res.render('users/signup',{
-			title:'Ingreso de Usuarios',
-			message:req.flash('info'),
-			isAuthenticated : req.isAuthenticated()
-		});
+		if(req.user.privilegios=='admin'){
+			return res.render('users/signup',{
+				title:'Ingreso de Usuarios',
+				message:req.flash('info'),
+				isAuthenticated : req.isAuthenticated(),
+				isAdmin:req.user.privilegios
+			});
+		}else{
+			res.redirect('/dashboard/panel/noticia');
+		}
 	},
 
 	PostSignUp:function(req,res,next){
 		/*console.log(req.body);
 		return;*/
-		
 		var salt=bcrypt.genSaltSync(10);
 		var password=bcrypt.hashSync(req.body.pass, salt);
 
@@ -41,7 +44,6 @@ module.exports={
 		req.flash('info','Usuario registrado correctamente '+user.Nombre+' ya puede iniciar sesión');
 		
 		return res.redirect('/dashboard/insertar/usuario');
-
 	},
 
 	getSignIn: function(req,res,next){
@@ -57,6 +59,7 @@ module.exports={
 	},
 
 	getUserPanel : function(req,res,next){
+		console.log('adasdasdasd');
 		res.render('dashboard/panel', {
 			title:'Dashboard',
 			isAuthenticated : req.isAuthenticated(),

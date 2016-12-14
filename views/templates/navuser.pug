@@ -1,0 +1,24 @@
+section#menu-container
+    ul.menu.dropdown.align-spaced(data-dropdown-menu='')
+        li
+            a(href='#')
+                i.fi-list
+                | Pendientes
+            ul#submenu-container.menu
+                li
+                    a(href='/dashboard/insertar/pendiente') Nuevo Pendiente
+                li
+                    a(href='/dashboard/panel/pendiente') Modificar o Eliminar
+        li
+            a(href='#')
+                i.fi-list
+                | Noticias
+            ul#submenu-container.menu
+                li
+                    a(href='/dashboard/insertar/noticia') Nueva Noticia
+                li
+                    a(href='/dashboard/panel/noticia') Modificar o Eliminar
+        li
+            a(href='/auth/logout')
+                i.fi-torso
+                | Salir
